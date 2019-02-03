@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   end
   
   def new 
-    
+    @post = Post.new
 
   def edit
     @post = Post.find(params[:id])
