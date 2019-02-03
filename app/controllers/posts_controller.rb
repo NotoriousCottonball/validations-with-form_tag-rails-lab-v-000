@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   
   def update
     if @post.update(author_params)
-      redirect_to post_path(@author)
+      redirect_to post_path(@post)
     else
       render :edit
     end
