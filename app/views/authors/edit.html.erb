@@ -1,25 +1,30 @@
-<h2>Editing "<%= @post.title %>"</h2>
-<%= form_tag post_path(@post), method: "patch" do %>
-  <div class="field">
-    <%= label_tag "title", "Title" %>
-    <%= text_field_tag "title", @post.title %>
+<%= form_tag("/authors") do %>
+  <% if @author.errors.any? %>
+    <div id="error_explanation">
+      <h2>There were some errors:</h2>
+      <ul>
+        <% @author.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field<%= ' field_with_errors' if @author.errors[:name].any? %>">
+    <%= label_tag "name", "Name" %>
+    <%= text_field_tag "name", @author.name %>
   </div>
 
-  <div class="field">
-    <%= label_tag "category", "Category" %>
-    <p>Must be either "Fiction" or "Non-Fiction".</p>
-    <%= text_field_tag "category", @post.category %>
-    <p>
-      Please type carefully as our top scientists are working around the clock to
-      enable state-of-the-art dropdown technology for this form field.
-    </p>
+  <div class="field<%= ' field_with_errors' if @author.errors[:email].any? %>">
+    <%= label_tag "email", "Email" %>
+    <%= text_field_tag "email", @author.email %>
   </div>
 
-  <div class="field">
-    <%= label_tag "content", "Content" %>
-    <br />
-    <%= text_area_tag "content", @post.content %>
+  <div class="field<%= ' field_with_errors' if @author.errors[:phone_number].any? %>">
+    <%= label_tag "phone_number", "Phone Number" %>
+    <%= text_field_tag "name", @author.phone_number %>
   </div>
+
   <%= submit_tag "Update" %>
 <% end %>
-
