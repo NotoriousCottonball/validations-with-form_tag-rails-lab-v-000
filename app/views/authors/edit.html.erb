@@ -1,4 +1,4 @@
-<%= form_tag(author) do %>
+<%= form_tag(author_path(@author), method: : do %>
 
 form_tag(tasks_path, method: :get) do
   <% if @author.errors.any? %>
